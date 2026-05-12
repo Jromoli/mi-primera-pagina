@@ -76,6 +76,9 @@ def get_campaigns():
         "limit": 100
     }
     r = requests.get(url, params=params)
+    if not r.ok or not r.text.strip():
+        print(f"❌ Error conectando a Meta API: {r.status_code} — {r.text[:200]}")
+        return []
     return r.json().get("data", [])
 
 def get_campaign_insights(campaign_id, date_preset="today"):
