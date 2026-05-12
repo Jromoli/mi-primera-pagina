@@ -10,6 +10,9 @@ import json
 import smtplib
 import os
 from datetime import datetime, timedelta
+from dotenv import load_dotenv
+
+load_dotenv()
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
@@ -17,16 +20,16 @@ from email.mime.multipart import MIMEMultipart
 # CONFIGURACIÓN — editá estos valores
 # ============================================================
 
-ACCESS_TOKEN = "EAF9PW9ZAOS88BRZAjNT0bQTNHc9ZBBgMhMDcYAmoHOaiOmp5ANmw0bOHBJPNmSnDJoQeeuAxtta05i0IR8WNX3WVXI3oOGbQ6jLy8dKNxmxRR6SaRQMMAZByGWZAHjTzEpmyZCECZAAFDFW0Rz8T69ZBgAk7YeGwLszI9FLtrc9vT8ndB0rd74mnYLQAMSBXZCvXOqZAZAOdouBvJs04sSQ3LrLc9oXYyBza9jZAj8Pul2kYX52CFkQvpTKZBH6RpyhZBAvXVpSp0syexJPvsifskwlqPFZARCb"
-AD_ACCOUNT_ID = "act_122704474782900"  # Tu cuenta de Samay
+ACCESS_TOKEN = os.getenv("META_ACCESS_TOKEN", "")
+AD_ACCOUNT_ID = os.getenv("META_AD_ACCOUNT_ID", "act_122704474782900")
 
 # Alertas por email (opcional)
-EMAIL_SENDER = "jesicaromoli@gmail.com"
-EMAIL_PASSWORD = ""     # contraseña de app Gmail
-EMAIL_RECEIVER = "jesicaromoli@gmail.com"
+EMAIL_SENDER = os.getenv("EMAIL_SENDER", "")
+EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD", "")
+EMAIL_RECEIVER = os.getenv("EMAIL_RECEIVER", "")
 
 # Anthropic API para análisis con IA
-ANTHROPIC_API_KEY = "sk-ant-api03-axA...9gAA"  # ⚠️ COMPLETAR: pegá tu API key completa
+ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "")
 
 # ============================================================
 # UMBRALES DE ALERTA — ajustá según tu negocio
